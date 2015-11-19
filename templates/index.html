@@ -1,0 +1,29 @@
+{% extends '_layout.html' %}
+
+{% block body %}
+
+  <nav class="nav">
+    <div class="nav__group">
+      <h6 class="nav__header">
+        Section Name
+      </h6>
+      <div class="nav__items">
+        <a href="" class="nav__item">
+          Section Item
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="doc">
+    <header class="doc__header">
+      <h1>{{ page.title }}</h1>
+    </header>
+    <section class="doc__contents">
+      {{ page.html | safe }}
+    </section>
+    <footer class="doc__footer">
+    </footer>
+  </article>
+
+{% endblock %}

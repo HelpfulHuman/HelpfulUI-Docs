@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{{ page_title }}</title>
+    <meta name="description" content="{{ page_description }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% if env != "production" %}
+      <meta name="robots" content="noindex,nofollow" />
+    {% endif %}
+
+    {% block head %}
+      <link rel="icon" href="/favicon.png' type='image/png" />
+      {% if env == "production" %}
+        <link rel="stylesheet" href="/site.min.css" />
+      {% else %}
+        <link rel="stylesheet" href="/site.css" />
+      {% endif %}
+    {% endblock %}
+
+  </head>
+  <body class="{{ page_class }}">
+
+    <main id="site" class="viewport">
+      {% block body %}{% endblock %}
+    </main>
+
+    {% block scripts %}
+      {% if env == "production" %}
+        <script src="/site.min.js"></script>
+      {% else %}
+        <script src="/site.js"></script>
+      {% endif %}
+      {% for script in scripts %}
+        <script src="{{ script }}"></script>
+      {% endfor %}
+    {% endblock %}
+
+  </body>
+</html>
